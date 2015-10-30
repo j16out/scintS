@@ -1,0 +1,10 @@
+/home/jerin/scintS/visopengl/build/external/CMakeFiles/ANTTWEAKBAR_116_OGLCORE_GLFW.dir
+/home/jerin/scintS/visopengl/build/external/bullet-2.81-rev2613/src/BulletCollision/CMakeFiles/BulletCollision.dir
+/home/jerin/scintS/visopengl/build/external/bullet-2.81-rev2613/src/BulletDynamics/CMakeFiles/BulletDynamics.dir
+/home/jerin/scintS/visopengl/build/external/bullet-2.81-rev2613/src/BulletSoftBody/CMakeFiles/BulletSoftBody.dir
+/home/jerin/scintS/visopengl/build/external/CMakeFiles/GLEW_190.dir
+/home/jerin/scintS/visopengl/build/external/glfw-3.0.3/src/CMakeFiles/GLFW_303.dir
+/home/jerin/scintS/visopengl/build/external/bullet-2.81-rev2613/src/LinearMath/CMakeFiles/LinearMath.dir
+/home/jerin/scintS/visopengl/build/external/assimp-3.0.1270/code/CMakeFiles/assimp.dir
+/home/jerin/scintS/visopengl/build/CMakeFiles/visualizer1.dir
+/home/jerin/scintS/visopengl/build/external/assimp-3.0.1270/contrib/zlib/CMakeFiles/zlib.dir

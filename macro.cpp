@@ -1,4 +1,4 @@
-//g++ macro.cpp GPT.cpp mroot.cpp -Wall -o2 -o test1 `root-config --cflags --glibs` -std=c++0x -pthread
+//example macro for Project1
 
 #include <vector>
 #include <iostream>

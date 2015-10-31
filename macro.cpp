@@ -11,8 +11,8 @@
 #include <math.h> 
 #include "TApplication.h"
 #include <thread>
-#include "mroot.hpp"
-#include "GPT.hpp"
+#include "mROOT/mroot.hpp"
+#include "gPT/GPT.hpp"
 
 
 
@@ -24,7 +24,7 @@ int main(int argc, char **argv)
 {
 bool res = false;  
 
-//loading model
+//vectors for data
 vector< vector< vector <double> > > AFpath;
 vector<double> pathtime;
 vector< vector< vector <double> > > scintsurf;//main geometry
@@ -34,29 +34,52 @@ vector< vector <double> > scintillation; // scintillation.at(n) is start point a
 vector<int> sensindex;
 
 
-
+//------------------------------------------loading model-----------------------------------------------//
 load_geometry(scintsurf, "Project1");//geometry
 load_sensors(sensorsurf, "Project1");//sensors
 
 
 
-//sensors
-//scintillation = getlaserpulse(scintsurf, 100, 1.0, 1.0, 0.00000001, points);//positron path through scintillator 
-scintillation = getscintpath(scintsurf, 5000, 1.0, 1.0, 2.0, points);
 
+
+//-------------------------------------------Generating Scintillation-----------------------------------//
+
+//scintillation = getlaserpulse(scintsurf, 100, 1.0, 1.0, 0.00000001, points);//laser path in scintillator
+scintillation = getscintpath(scintsurf, 5000, 1.0, 1.0, 2.0, points);//positron path through scintillator 
+
+
+
+
+
+//----------------------------------------Propagating/Detecting Photons---------------------------------//
 if(scintillation.size() > 0)
 {
-	getphoton(AFpath, pathtime, scintsurf, sensorsurf, scintillation, sensindex);//generated multithreaded photon path data	     
-	//Tanimate(AFpath);
-	//res = cadpath(AFpath, "visopengl/visualizer1/pdata.txt");//generate file for opengl 
+	getphoton(AFpath, pathtime, scintsurf, sensorsurf, scintillation, sensindex);//generated multithreaded photon path data	     	
+
 }
 else
 return 0;
+
+
+
+//---------------------------------------OpenGl visualization------------------------------------------//
+
+if(AFpath.size() > 0)
+{
+	Tanimate(AFpath);//reorganize for fancy animation
+	res = cadpath(AFpath, "visopengl/visualizer1/pdata.txt");//generate file for opengl
+}
+else
+return 0;
+ 
+ 
+ 
+//---------------------------------------ROOT analysis--------------------------------------------------// 
 	
 if(AFpath.size() > 0)
 { 
 	TApplication theApp("App", &argc, argv);
-	  SignalTime(pathtime, sensindex);
+	SignalTime(pathtime, sensindex);//display singal timings in root
 	visroot(scintillation,sensorsurf,scintsurf,AFpath,pathtime);
 	theApp.Run();
 

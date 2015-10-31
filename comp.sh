@@ -18,7 +18,7 @@ rm test1
 #g++ macro2.cpp GPT.cpp mroot.cpp -o2 -o mtest2 `root-config --cflags --glibs` -std=c++0x -pthread
 #macro1
 
-g++ macro.cpp GPT.cpp mroot.cpp -o2 -o test1 `root-config --cflags --glibs` -std=c++0x -pthread
+g++ macro.cpp gPT/GPT.cpp mROOT/mroot.cpp -o2 -o test1 `root-config --cflags --glibs` -std=c++0x -pthread
 
 echo "done!"
  

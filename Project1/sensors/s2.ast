@@ -1,0 +1,86 @@
+solid Mesh
+  facet normal -0.831470 0.555570 0.000000
+    outer loop
+      vertex 30.434021 54.550411 92.500000
+      vertex 30.434021 54.550411 91.500000
+      vertex 23.767178 44.572777 92.500000
+    endloop
+  endfacet
+  facet normal -0.831470 0.555570 0.000000
+    outer loop
+      vertex 30.434021 54.550411 91.500000
+      vertex 23.767178 44.572777 91.500000
+      vertex 23.767178 44.572777 92.500000
+    endloop
+  endfacet
+  facet normal 0.831470 -0.555570 0.000000
+    outer loop
+      vertex 33.744812 37.905933 92.500000
+      vertex 40.411655 47.883568 91.500000
+      vertex 40.411655 47.883568 92.500000
+    endloop
+  endfacet
+  facet normal 0.831470 -0.555570 0.000000
+    outer loop
+      vertex 33.744812 37.905933 92.500000
+      vertex 33.744812 37.905933 91.500000
+      vertex 40.411655 47.883568 91.500000
+    endloop
+  endfacet
+  facet normal -0.555570 -0.831470 0.000000
+    outer loop
+      vertex 23.767178 44.572777 91.500000
+      vertex 33.744812 37.905933 91.500000
+      vertex 33.744812 37.905933 92.500000
+    endloop
+  endfacet
+  facet normal -0.555570 -0.831470 -0.000000
+    outer loop
+      vertex 23.767178 44.572777 92.500000
+      vertex 23.767178 44.572777 91.500000
+      vertex 33.744812 37.905933 92.500000
+    endloop
+  endfacet
+  facet normal 0.555570 0.831470 0.000000
+    outer loop
+      vertex 40.411655 47.883568 92.500000
+      vertex 40.411655 47.883568 91.500000
+      vertex 30.434021 54.550411 91.500000
+    endloop
+  endfacet
+  facet normal 0.555570 0.831470 0.000000
+    outer loop
+      vertex 40.411655 47.883568 92.500000
+      vertex 30.434021 54.550411 91.500000
+      vertex 30.434021 54.550411 92.500000
+    endloop
+  endfacet
+  facet normal 0.000000 0.000000 -1.000000
+    outer loop
+      vertex 23.767178 44.572777 91.500000
+      vertex 30.434021 54.550411 91.500000
+      vertex 40.411655 47.883568 91.500000
+    endloop
+  endfacet
+  facet normal 0.000000 0.000000 -1.000000
+    outer loop
+      vertex 33.744812 37.905933 91.500000
+      vertex 23.767178 44.572777 91.500000
+      vertex 40.411655 47.883568 91.500000
+    endloop
+  endfacet
+  facet normal 0.000000 0.000000 1.000000
+    outer loop
+      vertex 40.411655 47.883568 92.500000
+      vertex 30.434021 54.550411 92.500000
+      vertex 23.767178 44.572777 92.500000
+    endloop
+  endfacet
+  facet normal 0.000000 0.000000 1.000000
+    outer loop
+      vertex 40.411655 47.883568 92.500000
+      vertex 23.767178 44.572777 92.500000
+      vertex 33.744812 37.905933 92.500000
+    endloop
+  endfacet
+endsolid Mesh

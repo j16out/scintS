@@ -2,6 +2,9 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <vector>
+#include <sys/stat.h>
+#include <unistd.h>
+#include <sstream>
  
 // Include GLEW
 #include <GL/glew.h>
@@ -38,10 +41,29 @@ quat gOrientation2;
  
 bool gLookAtOther = true;
 
+
+std::string int_to_string(int a);
+
+
+
+bool file_texists(std::string& name)
+{
+  struct stat buffer;   
+  return (stat (name.c_str(), &buffer) == 0); 
+}
+
+std::string int_to_string(int a)
+{
+std::stringstream ss;
+ss << a;
+std::string str = ss.str();
+return str;
+}
+
  
 int main( void )
 { float windsize = 1.2;
- 
+ const char* c; 
 	// Initialise GLFW
 	if( !glfwInit() )
 	{
@@ -154,8 +176,60 @@ int main( void )
 	std::vector<glm::vec3> vertices4;
 	std::vector<glm::vec2> uvs4;
 	std::vector<glm::vec3> normals4;
-	bool res = loadOBJ("../../cadd/sim45/sim45cone.ast", vertices, uvs, normals, VindexT, 0.95, 0.25, 0);
-	res = loadOBJ("../../cadd/sim45/ssim45.ast", vertices3, uvs3, normals3, VindexT,0.5, 0.01, 0);
+	
+	
+	//------------------------------------------Load Geometry and Sensors---------------------------------------------//
+	
+	std::string cadfile = "../../Project1";
+	 bool run1 = true;
+	 bool res;
+ 
+		 float k = 2;
+		 while(run1)
+		  {std::string temp = cadfile;
+		  temp.append("/geometry/g");
+		  temp.append(int_to_string(k));
+		  temp.append(".ast");
+		  c = temp.c_str();
+			  if(file_texists(temp))
+			  {
+			  res = loadOBJ(c, vertices, uvs, normals, VindexT, 0.95, 0.25, 0);
+			  run1 = false;
+			  }
+			  else
+			  {
+			  printf("Geometry file: %s Doesn't Exist", c);
+			  return 0;
+			  }
+		  ++k;
+		  }
+	k = 1;
+	run1 = true;
+		 while(run1)
+		  {std::string temp = cadfile;
+		  temp.append("/sensors/s");
+		  temp.append(int_to_string(k));
+		  temp.append(".ast");
+		   c = temp.c_str();
+			  if(file_texists(temp))
+			  {
+			  res = loadOBJ(c, vertices3, uvs3, normals3, VindexT,0.5, 0.01, 0);
+			  }
+			  else
+			  {
+			  run1 = false;
+				   if(k ==1)
+				   {
+				   printf("Geometry file: %s Doesn't Exist", c);
+				   return 0;
+				   }
+			   
+			  }
+		  ++k;
+		  }
+	
+	//bool res = loadOBJ("../../cadd/sim45/sim45cone.ast", vertices, uvs, normals, VindexT, 0.95, 0.25, 0);
+	//res = loadOBJ("../../cadd/sim45/ssim45.ast", vertices3, uvs3, normals3, VindexT,0.5, 0.01, 0);
 	res = loadOBJ("pdata.txt", vertices2, uvs2, normals2, Vindex, 1, 1, 0);
 	res = loadOBJ("../../cadd/positron/new", vertices4, uvs4, normals4, VindexT, 0.7, 0.7, 0);
 	

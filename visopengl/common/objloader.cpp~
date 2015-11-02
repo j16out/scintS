@@ -137,11 +137,11 @@ bool loadOBJ(
         
         
         if(type == 2)
-	{std::cout << "\n did this one";
+	{//std::cout << "\n did this one";
 	float scale = 30;
 	 int count = 0;
 	 	vector< vector <vector <double> > > Gpaths;
-	 	vector< vector < double > > vin;
+	 	vector< vector < double > > vin (1);
 		 vector< vector < double > > Event;
 		 vector< double > point0 (3);
 		 vector< double > point1 (3);
@@ -233,7 +233,7 @@ bool loadOBJ(
 	
 	}//end of if
 	else
-	{std::cout << "\n did the second one";
+	{std::cout << "\n Regular .ast Import: ";
 	
 		FILE * file = fopen(path, "r");
 		if( file == NULL ){

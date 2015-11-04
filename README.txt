@@ -20,7 +20,15 @@ Too compile opengl interface:
 
 	cd visopengl/build
 
-	open Make and CMakeCach.txt files and edit the home directory to match your own.
+	open Makefile and CMakeCach.txt files in build and change and edit the home directory to match your own ie search for "jerin" and replace with your own.
+	then make sure you have requisits for opengl ie:
+			-libglew-dev
+			-libglm-dev
+			-libassimp-dev
+			-glew-utils
+			-x11-xserver-utils
+			-libxrandr-dev
+			-libxi-dev
 
 	then make: 
 	$ make -j(number of cores)

@@ -24,7 +24,7 @@ struct quaternion
 vector< double> View (3);
 vector< double> View2 (3);
 vector< double> Axis (3);
-
+string projfile;
 
 
 
@@ -292,8 +292,10 @@ AFpath = FFpath;
 //----------------------------------------positron generation-----------------------------------------//
 
 //Returns scintillation vector---- > layout: scintillation.at(n) is start point and scintillation.at(n+1) is random direction for increments of n = n+2 ie start and direction alternate --> allows for a kind of memory of events
-vector< vector <double> > getscintpath(vector< vector <vector <double> > > surf1, float num, double x, double y, double z, vector < vector < double> > & points)
-{ vector<double>  ddir, nnn;
+vector< vector <double> > getscintpath(vector< vector <vector <double> > > surf1, float num, double x, double y, double z, vector < vector < double> > & points, string cadfile)
+{ projfile = cadfile;
+
+vector<double>  ddir, nnn;
   vector<double> I(3);
     vector<double> R(3);
     points.clear();
@@ -322,13 +324,23 @@ vector< vector <double> > getscintpath(vector< vector <vector <double> > > surf1
 	//generate positron path in .ast
 	
 	 std::ofstream myfile4;
-	  myfile4.open ("cadd/positron/new");
+	 
+	 string temp = cadfile;
+         temp.append("/positron/new");
+	 
+	 
+	 
+	myfile4.open (temp);
 	  
 	vector< vector< vector <double> > > posobj;
 	vector< vector< vector <double> > > facobj;
 	vector< vector <double> > posvert;
-	getcad(posobj, "cadd/positron/positron.ast", "V");
-	getcad(facobj, "cadd/positron/positron.ast", "F");
+	
+	temp = cadfile;
+        temp.append("/positron/positron.ast");
+	
+	getcad(posobj, temp, "V");
+	getcad(facobj, temp, "F");
 	View.at(0) = 0;
         View.at(1) = 0;
         View.at(2) = -1;
@@ -531,13 +543,13 @@ return scintstart;
 //----------------------------------------Laser Pulse generation-----------------------------------------//
 
 //Returns scintillation vector---- > layout: scintillation.at(n) is start point and scintillation.at(n+1) is random direction for increments of n = n+2 ie start and direction alternate --> allows for a kind of memory of events
-vector< vector <double> > getlaserpulse(vector< vector <vector <double> > > surf1, float num, double x, double y, double z, vector < vector < double> > & points)
+vector< vector <double> > getlaserpulse(vector< vector <vector <double> > > surf1, float num, double x, double y, double z, vector < vector < double> > & points, string cadfile)
 { vector<double>  ddir, nnn;
   vector<double> I(3);
     vector<double> R(3);
     points.clear();
    
-
+	projfile = cadfile;
 	vector< vector< double > > T(3);
 	vector< vector< double > > P(2);
 	vector< vector< double > > intercepts;
@@ -560,14 +572,24 @@ vector< vector <double> > getlaserpulse(vector< vector <vector <double> > > surf
 	
 	//generate positron path in .ast
 	
-	 std::ofstream myfile4;
-	  myfile4.open ("cadd/positron/new");
+	std::ofstream myfile4;
+	 
+	 string temp = cadfile;
+         temp.append("/positron/new");
+	 
+	 
+	 
+	myfile4.open (temp);
 	  
 	vector< vector< vector <double> > > posobj;
 	vector< vector< vector <double> > > facobj;
 	vector< vector <double> > posvert;
-	getcad(posobj, "cadd/positron/positron.ast", "V");
-	getcad(facobj, "cadd/positron/positron.ast", "F");
+	
+	temp = cadfile;
+        temp.append("/positron/positron.ast");
+	
+	getcad(posobj, temp, "V");
+	getcad(facobj, temp, "F");
 	View.at(0) = 0;
         View.at(1) = 0;
         View.at(2) = -1;
@@ -639,14 +661,14 @@ vector< vector <double> > getlaserpulse(vector< vector <vector <double> > > surf
 			  }
 			  
 		  }
-	//cout << "\n int size " << intercepts.size();
+	cout << "\n int size " << intercepts.size();
 	//check for duplicates
 	bool odd = false;
 
 int jj = 0;
 int pp = 0;	
 	
-for(int i = 0; i < 2; ++i)
+for(int i = 0; i < 1; ++i)
 {
 
 int fpsize = intercepts.size();
@@ -1090,12 +1112,19 @@ AFpath = Gpaths;
 //------------------------------------------Generate CADpaths-------------------------------------------//
 
 
-bool cadpath(vector< vector <vector <double> > > Gpaths, const char* filename)
+bool cadpath(vector< vector <vector <double> > > Gpaths)
 {	printf("\nWriting data to file...."); 
 	 int count = 0;
+	 
+	string temp = projfile;
+	temp.append("/positron/pdata.txt");
+	cout << "\nCreating Opengl file: " << temp;
+	 
+	 
 	 std::ofstream myfile;
-	  myfile.open (filename);
-	 	 
+	 
+	  myfile.open (temp);
+		 
 	 vector< vector < double > > Event;
 	 vector< double > point0 (3);
 	 vector< double > point1 (3);
@@ -1152,7 +1181,7 @@ bool cadpath(vector< vector <vector <double> > > Gpaths, const char* filename)
 	
 	
 	  myfile.close();
-	  printf("Done");
+	  printf("...done");
 	  return true;
 }
 

@@ -230,17 +230,53 @@ c4->cd();
   fsum1->GetXaxis()->SetRangeUser(0,100);
   fsum1->GetYaxis()->SetRangeUser(0,max1);
 TF1 *myfit = new TF1("myfit","(x-[3]>0)*(-([2])*(exp(-(x-[3])/[0])-exp(-(x-[3])/[1])))", 0,100);
+TF1 *myfit1 = new TF1("myfit1","(x-[3]>0)*(-([2])*(exp(-(x-[3])/[0])-exp(-(x-[3])/[1])))", 0,100);
+TF1 *myfit2 = new TF1("myfit2","(x-[3]>0)*(-([2])*(exp(-(x-[3])/[0])-exp(-(x-[3])/[1])))", 0,100);
+TF1 *myfit3 = new TF1("myfit3","(x-[3]>0)*(-([2])*(exp(-(x-[3])/[0])-exp(-(x-[3])/[1])))", 0,100);
 myfit->SetParameter(0, 5);
 myfit->SetParameter(1, 10);
 myfit->SetParameter(2, 1000);
 myfit->SetParameter(3, 0);
 
+myfit1->SetParameter(0, 5);
+myfit1->SetParameter(1, 10);
+myfit1->SetParameter(2, 1000);
+myfit1->SetParameter(3, 0);
+
+myfit2->SetParameter(0, 5);
+myfit2->SetParameter(1, 10);
+myfit2->SetParameter(2, 1000);
+myfit2->SetParameter(3, 0);
+
+myfit3->SetParameter(0, 5);
+myfit3->SetParameter(1, 10);
+myfit3->SetParameter(2, 1000);
+myfit3->SetParameter(3, 0);
+
 myfit->SetParNames("#tau_{Rise}", "#tau_{Fall}", "V_{max}", "t_{o}");
 myfit->SetLineWidth(2);
 myfit->SetLineColor(1);
 gStyle->SetOptFit();
+
+myfit1->SetParNames("#tau_{Rise}", "#tau_{Fall}", "V_{max}", "t_{o}");
+myfit1->SetLineWidth(2);
+myfit1->SetLineColor(1);
+gStyle->SetOptFit();
+
+myfit2->SetParNames("#tau_{Rise}", "#tau_{Fall}", "V_{max}", "t_{o}");
+myfit2->SetLineWidth(2);
+myfit2->SetLineColor(1);
+gStyle->SetOptFit();
+
+myfit3->SetParNames("#tau_{Rise}", "#tau_{Fall}", "V_{max}", "t_{o}");
+myfit3->SetLineWidth(2);
+myfit3->SetLineColor(1);
+gStyle->SetOptFit();
    
-fsum1->Fit("myfit","M","",0, 100);   
+fsum1->Fit("myfit","M","",0, 100); 
+fsum2->Fit("myfit1","M","",0, 100); 
+fsum3->Fit("myfit2","M","",0, 100); 
+fsum4->Fit("myfit3","M","",0, 100);   
    fsum1->SetTitle("SiPM Signal Array 1;Time (ns);Amplitude (mV)");
    fsum1->Draw("AL");
     fsum2->Draw("sameL");

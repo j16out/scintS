@@ -44,8 +44,8 @@ load_sensors(sensorsurf, "Project1");//sensors
 
 //-------------------------------------------Generating Scintillation-----------------------------------//
 
-//scintillation = getlaserpulse(scintsurf, 100, 1.0, 1.0, 0.00000001, points);//laser path in scintillator
-scintillation = getscintpath(scintsurf, 5000, 1.0, 1.0, 2.0, points);//positron path through scintillator 
+scintillation = getlaserpulse(scintsurf, 100, 1.0, 1.0, 0.00000001, points, "Project1");//laser path in scintillator
+//scintillation = getscintpath(scintsurf, 5000, 1.0, 1.0, 2.0, points, "Project1");//positron path through scintillator 
 
 
 
@@ -67,7 +67,7 @@ return 0;
 if(AFpath.size() > 0)
 {
 	Tanimate(AFpath);//reorganize for fancy animation
-	res = cadpath(AFpath, "visopengl/visualizer1/pdata.txt");//generate file for opengl
+	res = cadpath(AFpath);//generate file for opengl
 }
 else
 return 0;
@@ -79,7 +79,7 @@ return 0;
 if(AFpath.size() > 0)
 { 
 	TApplication theApp("App", &argc, argv);
-	SignalTime(pathtime, sensindex);//display singal timings in root
+	//SignalTime(pathtime, sensindex);//display singal timings in root
 	visroot(scintillation,sensorsurf,scintsurf,AFpath,pathtime);
 	theApp.Run();
 

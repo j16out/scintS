@@ -34,12 +34,12 @@ void load_sensors(vector< vector <vector <double> > > & surfvec, string cadfile)
 void getphoton(vector< vector< vector <double> > > & AFpath, vector<double> & pathtime, vector< vector <vector <double> > > scintsurf, vector< vector <vector <double> > > sensorsurf, vector< vector <double> > scintillation, vector <int> & sensindex);
 
 //Random Start Points/Directions for photons/positron animation
-vector< vector <double> > getscintpath(vector< vector <vector <double> > > surf1, float num, double x, double y, double z, vector < vector < double> > & points);
-bool cadpath(vector< vector <vector <double> > > Gpaths, const char* filename);
+vector< vector <double> > getscintpath(vector< vector <vector <double> > > surf1, float num, double x, double y, double z, vector < vector < double> > & points, string cadfile);
+
+bool cadpath(vector< vector <vector <double> > > Gpaths);
 
 //Generate random points for laser pulse inside scintillator
-vector< vector <double> > getlaserpulse(vector< vector <vector <double> > > surf1, float num, double x, double y, double z, vector < vector < double> > & points);
-bool cadpath(vector< vector <vector <double> > > Gpaths, const char* filename);
+vector< vector <double> > getlaserpulse(vector< vector <vector <double> > > surf1, float num, double x, double y, double z, vector < vector < double> > & points, string cadfile);
 
 //Generated points between reflected points for animation purposes
 void Tanimate(vector< vector <vector <double> > > & AFpath);

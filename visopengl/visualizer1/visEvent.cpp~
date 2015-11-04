@@ -177,13 +177,17 @@ int main( void )
 	std::vector<glm::vec2> uvs4;
 	std::vector<glm::vec3> normals4;
 	
+	
+	//------------------------------------------Load Geometry and Sensors---------------------------------------------//
+	
 	std::string cadfile = "../../Project1";
 	 bool run1 = true;
 	 bool res;
- 
+ 	std::string temp;
+ 	
 		 float k = 2;
 		 while(run1)
-		  {std::string temp = cadfile;
+		  {temp = cadfile;
 		  temp.append("/geometry/g");
 		  temp.append(int_to_string(k));
 		  temp.append(".ast");
@@ -203,7 +207,7 @@ int main( void )
 	k = 1;
 	run1 = true;
 		 while(run1)
-		  {std::string temp = cadfile;
+		  {temp = cadfile;
 		  temp.append("/sensors/s");
 		  temp.append(int_to_string(k));
 		  temp.append(".ast");
@@ -217,21 +221,52 @@ int main( void )
 			  run1 = false;
 				   if(k ==1)
 				   {
-				   printf("Geometry file: %s Doesn't Exist", c);
+				   printf("Sensor file: %s Doesn't Exist", c);
 				   return 0;
 				   }
 			   
 			  }
 		  ++k;
 		  }
-	
-	
-	
-	
+	temp = cadfile;
+	temp.append("/positron/pdata.txt");
+	 c = temp.c_str();
+			  if(file_texists(temp))
+			  {
+			  res = loadOBJ(c, vertices2, uvs2, normals2, Vindex, 1, 1, 0);
+			  }
+			  else
+			  {
+			  run1 = false;
+				   if(k ==1)
+				   {
+				   printf("Positron file: %s Doesn't Exist", c);
+				   return 0;
+				   }
+			   
+			  }
+			  
+	  temp = cadfile;
+	  temp.append("/positron/new");
+	  c = temp.c_str();
+			  if(file_texists(temp))
+			  {
+			  res = loadOBJ(c, vertices4, uvs4, normals4, VindexT, 0.7, 0.7, 0);
+			  }
+			  else
+			  {
+			  run1 = false;
+				   if(k ==1)
+				   {
+				   printf("Positron file: %s Doesn't Exist", c);
+				   return 0;
+				   }
+			   
+			  }
 	//bool res = loadOBJ("../../cadd/sim45/sim45cone.ast", vertices, uvs, normals, VindexT, 0.95, 0.25, 0);
 	//res = loadOBJ("../../cadd/sim45/ssim45.ast", vertices3, uvs3, normals3, VindexT,0.5, 0.01, 0);
-	res = loadOBJ("pdata.txt", vertices2, uvs2, normals2, Vindex, 1, 1, 0);
-	res = loadOBJ("../../cadd/positron/new", vertices4, uvs4, normals4, VindexT, 0.7, 0.7, 0);
+	//res = loadOBJ("pdata.txt", vertices2, uvs2, normals2, Vindex, 1, 1, 0);
+	//res = loadOBJ("../../cadd/positron/new", vertices4, uvs4, normals4, VindexT, 0.7, 0.7, 0);
 	
  
 

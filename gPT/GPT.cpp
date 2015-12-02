@@ -172,13 +172,13 @@ if(range6%2 != 0)
 {++range6;
 }
 
-thread t1(gen, ref(AFpath1), ref(pathtime1), scintsurf, sensorsurf, scintillation, ref(sensindex1),"R", 0, range1);
-thread t2(gen, ref(AFpath2), ref(pathtime2), scintsurf, sensorsurf, scintillation, ref(sensindex2),"R", range1,range2 );
-thread t3(gen, ref(AFpath3), ref(pathtime3), scintsurf, sensorsurf, scintillation, ref(sensindex3),"R", range2, range3);
-thread t4(gen, ref(AFpath4), ref(pathtime4), scintsurf, sensorsurf, scintillation, ref(sensindex4),"R", range3, range4);
-thread t5(gen, ref(AFpath5), ref(pathtime5), scintsurf, sensorsurf, scintillation, ref(sensindex5),"R", range4, range5);
-thread t6(gen, ref(AFpath6), ref(pathtime6), scintsurf, sensorsurf, scintillation, ref(sensindex6),"R", range5,range6 );
-thread t7(gen, ref(AFpath7), ref(pathtime7), scintsurf, sensorsurf, scintillation, ref(sensindex7),"R", range6, jobsize);
+thread t1(gen, ref(AFpath1), ref(pathtime1), scintsurf, sensorsurf, scintillation, ref(sensindex1),"RT", 0, range1);
+thread t2(gen, ref(AFpath2), ref(pathtime2), scintsurf, sensorsurf, scintillation, ref(sensindex2),"RT", range1,range2 );
+thread t3(gen, ref(AFpath3), ref(pathtime3), scintsurf, sensorsurf, scintillation, ref(sensindex3),"RT", range2, range3);
+thread t4(gen, ref(AFpath4), ref(pathtime4), scintsurf, sensorsurf, scintillation, ref(sensindex4),"RT", range3, range4);
+thread t5(gen, ref(AFpath5), ref(pathtime5), scintsurf, sensorsurf, scintillation, ref(sensindex5),"RT", range4, range5);
+thread t6(gen, ref(AFpath6), ref(pathtime6), scintsurf, sensorsurf, scintillation, ref(sensindex6),"RT", range5,range6 );
+thread t7(gen, ref(AFpath7), ref(pathtime7), scintsurf, sensorsurf, scintillation, ref(sensindex7),"RT", range6, jobsize);
 
 
 t1.join();
@@ -846,7 +846,7 @@ double theta;
 		vector<double> pp0(3);//initial position
 		vector<double> pp1(3);//direction vector
 		vector<vector <double> > refpoints;
-		//pp0 = scint.at(n);
+		pp0 = scint.at(n);
 
 		//starting point of photon 
 		//pp0.at(0) = 0;//x
@@ -950,7 +950,7 @@ double theta;
 				    pp1 = addvec(pp0, R);
 				    //cout << "\nafter\npp0: " << pp0.at(0) << "   " << pp0.at(1) << "  " << pp0.at(2);
 				    //cout << "\npp1: " << pp1.at(0) << "   " << pp1.at(1) << "  " << pp1.at(2);
-				                   if(theta <= 40.0)
+				                   if(theta <= 45.0)
                                                    {
 						    cout << "\nHit Sensor #" << wsens;
 						    detected++;

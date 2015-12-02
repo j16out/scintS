@@ -69,6 +69,11 @@ hist->Draw("glcolz");
 void SignalTime(vector<double> pathtime, double & time)
 { 
          
+    
+     
+     
+     
+     
      // TCanvas *c1 = new TCanvas("c1","The FillRandom example",500,10,500,500);
       vector<float> graphs1A (20000), graphs1B (20000);
       float tomp, x, y;
@@ -137,7 +142,32 @@ void SignalTime(vector<double> pathtime, vector<int> sensindex)
 	TGraph *fsum4 = new TGraph();
      
      
-     
+   TCanvas *c9 = new TCanvas("c9","The FillRandom example",500,10,500,500);
+     c9->cd();
+		TH1D * OutHist = new TH1D("data", "", 500, 0, 50);
+		TF1 *mfit1 = new TF1("mfit1","gaus");
+
+		float ftime;
+		if(pathtime.size() > 0)
+		{
+		for (float i = 0; i < pathtime.size(); ++i)
+			{	    	    
+				ftime = pathtime.at(i);
+				OutHist->Fill(ftime);
+		
+			}
+
+		OutHist->SetLineColor(1);     
+			OutHist->SetFillStyle(3005);
+			OutHist->SetFillColor(4);//blue
+	
+		OutHist->SetTitle("Photon Arrival Times; Time (ns); N");
+		OutHist->Fit("mfit1","LL","",-3,15);
+		gStyle->SetOptFit();
+		OutHist->Draw(); 
+		}
+		else
+		cout <<"\n nothing in pathtime";   
      
      
 for(int q = 0; q < sensorindex1.size()-1; ++q)

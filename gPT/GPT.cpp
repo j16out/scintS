@@ -846,15 +846,23 @@ double theta;
 		vector<double> pp0(3);//initial position
 		vector<double> pp1(3);//direction vector
 		vector<vector <double> > refpoints;
-		pp0 = scint.at(n);
+		
+		
+		pp0 = scint.at(n);//starting point of photon 
+		pp1 = scint.at(n+1);//random starting direction of photon
 
-		//starting point of photon 
-		//pp0.at(0) = 0;//x
-		//pp0.at(1) = 30;//y
-		//pp0.at(2) = 0;//z;//z
+		//Manual set of photon start and direction
+		/*
+		pp0.at(0) = 0;//x
+		pp0.at(1) = 30;//y
+		pp0.at(2) = 0;//z
+		
+		pp1.at(0) = 0;//x
+		pp1.at(1) = 0.5;//y
+		pp1.at(2) = 1;//z
 		//cout << "\n" << pos.at(0) << "  &  " << pos.at(1) << "  &rad:   " << sqrt(pow(pos.at(0),2)+pow(pos.at(1),2));
-		//random starting direction of photon
-		pp1 = scint.at(n+1);
+		*/
+		
 	        pp1 = addvec(pp1, pp0);
 
 
@@ -916,7 +924,7 @@ double theta;
 			    {gg = ggvalue.at(i);		
 			     T = surfFinal.at(gg);
 			     o = triangledetect(T, P, I , R , nnn, ddir, theta);
-			     pathtime1 = ( sqrt( pow( (pp0.at(0)-I.at(0)),2 )+pow( (pp0.at(1)-I.at(1)),2 )+pow( (pp0.at(2)-I.at(2)),2)));
+			     pathtime1 = ( sqrt( pow( (pp0.at(0)-I.at(0)),2 )+pow( (pp0.at(1)-I.at(1)),2 )+pow( (pp0.at(2)-I.at(2)),2))/300);
 			    // cout << "\n pathtime  " << pathtime1 << "   gg " << gg;
 			     if(pathtime1 < shortest)
 				     {
@@ -944,7 +952,7 @@ double theta;
 				    //cout << "\npp1: " << pp1.at(0) << "   " << pp1.at(1) << "  " << pp1.at(2);	
 				    //cout << "\nintercept: " << I.at(0) << "  " << I.at(1) << "   " << I.at(2);
 				    refpoints.push_back(I);
-				    pathtime1 = ( sqrt( pow( (pp0.at(0)-I.at(0)),2 )+pow( (pp0.at(1)-I.at(1)),2 )+pow( (pp0.at(2)-I.at(2)),2)));
+				    pathtime1 = ( sqrt( pow( (pp0.at(0)-I.at(0)),2 )+pow( (pp0.at(1)-I.at(1)),2 )+pow( (pp0.at(2)-I.at(2)),2))/300);
 				    sumtime = sumtime+pathtime1;
 				    pp0 = I;
 				    pp1 = addvec(pp0, R);

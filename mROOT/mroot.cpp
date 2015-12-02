@@ -144,7 +144,7 @@ void SignalTime(vector<double> pathtime, vector<int> sensindex)
      
    TCanvas *c9 = new TCanvas("c9","The FillRandom example",500,10,500,500);
      c9->cd();
-		TH1D * OutHist = new TH1D("data", "", 500, 0, 50);
+		TH1D * OutHist = new TH1D("data", "", 50000, 0, 50);
 		TF1 *mfit1 = new TF1("mfit1","gaus");
 
 		float ftime;
@@ -513,12 +513,12 @@ void visroot(vector< vector <double> > scintillation,vector< vector< vector <dou
 
 		}
 		
-		float ax = 70;
-		//gr->GetXaxis()->SetRangeUser(-ax,ax); 
-		//gr->GetYaxis()->SetRangeUser(-ax,ax); 
+		float ax = 10;
+		gr->GetXaxis()->SetRangeUser(-ax,ax); 
+		gr->GetYaxis()->SetRangeUser(-ax,ax); 
 		gr->GetZaxis()->SetRangeUser(-ax,ax);
-		//gr2->GetXaxis()->SetRangeUser(-ax,ax); 
-		//gr2->GetYaxis()->SetRangeUser(-ax,ax); 
+		gr2->GetXaxis()->SetRangeUser(-ax,ax); 
+	        gr2->GetYaxis()->SetRangeUser(-ax,ax); 
 		gr2->GetZaxis()->SetRangeUser(-ax,ax);
 		gr->SetTitle("Photon Scintillation Trajectory");
 		gr2->SetMarkerStyle(10);

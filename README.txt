@@ -1,6 +1,6 @@
 photon simulations using cuda/root/opengl
 
-Before compiling make appropriate changes for multicore threading (in GPD.cxx) as is set up for 8-core cpu
+Before compiling make appropriate changes for multicore threading (in GPT.cxx) as is set up for 8-core cpu
 Too compile simulation:
 
 	make sure latest g++/gcc installed
